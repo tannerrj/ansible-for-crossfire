@@ -1,0 +1,11 @@
+---
+- hosts: ubuntu
+
+  tasks:
+    - ping: ~
+
+    - name: Update host using apt
+      become: true
+      apt:
+        update_cache: yes
+        upgrade: dist
