@@ -1,0 +1,67 @@
+---
+- name: Install and Build Crossfire Client on Ubuntu Jammy
+  hosts: all
+  become: yes
+  gather_facts: yes
+
+  tasks:
+    - name: Update apt cache
+      apt:
+        update_cache: yes
+
+    - name: Install required packages
+      apt:
+        name:
+          - cmake
+          - git
+          - libcurl4-openssl-dev
+          - libglade2-dev
+          - libsdl2-mixer-dev
+          - libsdl1.2-dev
+          - libsdl-image1.2-dev
+          - libsdl-mixer1.2-dev
+          - libgtk2.0-dev
+          - valac
+        state: present
+      register: install_result
+
+    - name: Check if packages were installed successfully
+      fail:
+        msg: "Failed to install required packages. Please check package names and try again."
+      when: install_result.failed or "'is not installed' in install_result.msg"
+
+    - name: Clone Crossfire Client repository
+      git:
+        repo: https://git.code.sf.net/p/crossfire/crossfire-client
+        dest: /path/to/crossfire-crossfire-client
+
+    - name: Clone Crossfire Sounds repository
+      git:
+        repo: https://git.code.sf.net/p/crossfire/crossfire-sounds
+        dest: /path/to/crossfire-crossfire-client/sounds
+
+    - name: Create build directory
+      file:
+        path: /path/to/crossfire-crossfire-client/build
+        state: directory
+
+    - name: Change to the build directory
+      become: no
+      command: cd /path/to/crossfire-crossfire-client/build
+      args:
+        chdir: /path/to/crossfire-crossfire-client/build
+
+    - name: Run CMake
+      command: cmake ..
+      args:
+        chdir: /path/to/crossfire-crossfire-client/build
+
+    - name: Build the project
+      make:
+        chdir: /path/to/crossfire-crossfire-client/build
+
+    - name: Install the project
+      become: yes
+      make:
+        target: install
+        chdir: /path/to/crossfire-crossfire-client/build
