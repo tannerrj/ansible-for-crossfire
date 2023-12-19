@@ -27,7 +27,7 @@
 
     - name: Check if packages were installed successfully
       fail:
-        msg: "Failed to install required packages. Please check package names and try again."
+        msg: "ERROR: Failed to install required packages. Please check package names and try again."
       when: install_result.failed or "'is not installed' in install_result.msg"
 
     - name: Clone Crossfire Client repository
