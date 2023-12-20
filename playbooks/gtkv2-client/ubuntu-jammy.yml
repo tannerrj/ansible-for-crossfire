@@ -1,4 +1,8 @@
 ---
+# VERY IMPORTANT!
+# Update dest: path with the correct file path for where you are installing the Client
+# For instance, /path/to/crossfire-crossfire-client would likely be /home/<username>/crossfire-crossfire-client
+#
 - name: Install and Build Crossfire Client on Ubuntu Jammy
   hosts: all
   become: yes
