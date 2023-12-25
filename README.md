@@ -10,7 +10,7 @@ WIP
 
 ### Requirements
 
-WIP
+A working installation of `git` along with ssh keys distributed to remote host(s).
 
 ## Guidelines
 
