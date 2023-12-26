@@ -12,6 +12,9 @@ WIP
 
 A working installation of `git` along with ssh keys distributed to remote host(s).
 
+ * `openssh-client` - secure shell (SSH) client, for secure access to remote machines
+ * `ansible` - Configuration management, deployment, and task execution system
+
 ## Guidelines
 
 ### Description: Questions to Consider
