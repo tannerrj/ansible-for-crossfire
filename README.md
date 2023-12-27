@@ -12,8 +12,8 @@ WIP
 
 A working installation of `git` along with ssh keys distributed to remote host(s).
 
- * `openssh-client` - secure shell (SSH) client, for secure access to remote machines
  * `ansible` - Configuration management, deployment, and task execution system
+ * `openssh-client` - secure shell (SSH) client, for secure access to remote machines
  * `python3` - interactive high-level object-oriented language (default python3 version)
 
 ## Guidelines
